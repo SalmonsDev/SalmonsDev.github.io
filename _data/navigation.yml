@@ -1,0 +1,22 @@
+# main links
+main:
+  - title: "PROJECT"
+    url: /project/
+  - title: "iOS"
+    url: /ios/
+  - title: "AOS"
+    url: /aos/
+  - title: "ARCHIVE"
+    url: /year-archive/
+  - title: "TAG"
+    url: /tags/
+  - title: "CATEGORY"
+    url: /categories/
+#  - title: "Quick-Start Guide"
+#    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
+  # - title: "About"
+  #   url: https://mmistakes.github.io/minimal-mistakes/about/
+  # - title: "Sample Collections"
+  #   url: /collection-archive/
+  # - title: "Sitemap"
+  #   url: /sitemap/

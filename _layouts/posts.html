@@ -1,0 +1,63 @@
+---
+layout: archive
+---
+
+{{ content }}
+
+<ul class="taxonomy__index">
+  {% assign postsInYear = site.posts | where_exp: "item", "item.hidden != true" | group_by_exp: 'post', 'post.date | date: "%Y"' %}
+  {% for year in postsInYear %}
+    <li>
+      <a href="#{{ year.name }}">
+        <strong>{{ year.name }}</strong> <span class="taxonomy__count">{{ year.items | size }}</span>
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+
+{% assign entries_layout = page.entries_layout | default: 'list' %}
+{% assign postsByYear = site.posts | where_exp: "item", "item.hidden != true" | group_by_exp: 'post', 'post.date | date: "%Y"' %}
+{% for year in postsByYear %}
+  <section id="{{ year.name }}" class="taxonomy__section">
+    <h2 class="archive__subtitle">{{ year.name }}</h2>
+    <div class="entries-{{ entries_layout }}">
+      {% for post in year.items %}
+        {% include archive-single.html type=entries_layout %}
+      {% endfor %}
+    </div>
+    <a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
+  </section>
+{% endfor %}
+<!------->
+<!--layout: default_post-->
+<!------->
+<!--<article class="post" itemscope itemtype="http://schema.org/BlogPosting">-->
+<!--  <header class="post-header single-post-header" style="background-image:url('{{ site.url }}{{ page.image }}')">-->
+<!--    <div>-->
+<!--      <h1 class="post-title single-post-title" itemprop="name headline">{{ page.title }}</h1>-->
+<!--      <p class="post-meta single-post-meta">-->
+<!--        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date_to_long_string }}</time>-->
+<!--        •-->
+<!--        {% assign words = page.content | number_of_words %}-->
+<!--        {% if words < 360 %}-->
+<!--          1 min-->
+<!--        {% else %}-->
+<!--          {{ words | divided_by:180 }} mins-->
+<!--        {% endif %}-->
+<!--        read-->
+<!--      </p>-->
+<!--    </div>-->
+<!--  </header>-->
+<!--  <div class="wrapper">-->
+<!--    <div class="single-post-summary">-->
+<!--     <code> {{ page.summary }} </code>-->
+<!--    </div>-->
+<!--    <div class="post-content single-post-content" itemprop="articleBody">-->
+<!--     <code> {{ content }} </code>-->
+<!--    </div>-->
+<!--    {% if page.comments %}-->
+<!--        <-- add your code here -->
+<!--    {% endif %}-->
+<!--  </div>-->
+<!--</article>-->
+<!---->

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: http://salmonsdev.github.io/sitemap.xml

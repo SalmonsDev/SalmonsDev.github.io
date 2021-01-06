@@ -20,7 +20,7 @@ title                    : "연어들의 개발블로그"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "연어들의 개발블로그"
-description              : "Suni, Gyu, Seil"
+description              : "Suni, kyuchanE, Seil"
 url                      : "https://salmonsdev.github.io"# the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "SalmonsDev/SalmonsDev.github.io"# GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"

@@ -95,7 +95,7 @@ analytics:
 author:
   name             : "Salmons"
   avatar           : "/assets/images/profile.jpg"# path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "iOS. Suni / AOS. Gyu, Seil"
+  bio              : "iOS. Suni / AOS. kyuchanE, Seil"
   location         : "Korea"
   links:
     - label: "Email"
@@ -119,6 +119,9 @@ author:
     - label: "Suni"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/SuniDev"
+    - label: "kyuchanE"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/kyuchanE"
     - label: "Suni's Blog"
       icon: ""
       url: "https://sunidev.github.io"
@@ -146,6 +149,9 @@ footer:
     - label: "Suni"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/SuniDev"
+    - label: "kyuchanE"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/kyuchanE"
     - label: "Suni's Blog"
       icon: ""
       url: "https://sunidev.github.io"

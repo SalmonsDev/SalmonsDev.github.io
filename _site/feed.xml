@@ -5,9 +5,77 @@
     <description>Suni, kyuchanE, Seil</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 06 Jan 2021 14:04:23 +0900</pubDate>
-    <lastBuildDate>Wed, 06 Jan 2021 14:04:23 +0900</lastBuildDate>
+    <pubDate>Wed, 06 Jan 2021 15:16:24 +0900</pubDate>
+    <lastBuildDate>Wed, 06 Jan 2021 15:16:24 +0900</lastBuildDate>
     <generator>Jekyll v3.9.0</generator>
+    
+      <item>
+        <title>[iOS/Xcode] SceneDelegate 삭제하고 App Build</title>
+        <description>&lt;p&gt;Xcode11부터 iOS App 프로젝트에 자동으로 SceneDelegate가 적용된 템플릿이 추가됩니다.
+SceneDelegate에 대해서는 추후에 포스팅하겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;이번-글은&quot;&gt;이번 글은&lt;/h2&gt;
+&lt;p&gt;SceneDelegate를 사용하지 않고 iOS App을 빌드하는 방법입니다.&lt;br /&gt;
+첨부 이미지는 Storyboard intreface기반 Swift 프로젝트입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;1-프로젝트-생성&quot;&gt;1. 프로젝트 생성&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/suni/210106/remove-scenedelegate1.png&quot; alt=&quot;image-center&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;File &amp;gt; New &amp;gt; Project 에서 iOS &amp;gt; App을 선택하고
+Interface를 Storyboard로 지정하여 프로젝트를 생성합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;2-scenedelegateswift-파일-삭제&quot;&gt;2. SceneDelegate.swift 파일 삭제&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/suni/210106/remove-scenedelegate2.png&quot; alt=&quot;image-center&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;SceneDelegate.swift 파일을 삭제합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;3-infoplist--application-scene-manifest-삭제&quot;&gt;3. info.plist &amp;gt; Application Scene Manifest 삭제&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/suni/210106/remove-scenedelegate3.png&quot; alt=&quot;image-center&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;info.plist 에서 Application Scene Manifest를 삭제합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;4-appdelegateswift-수정&quot;&gt;4. AppDelegate.swift 수정&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/suni/210106/remove-scenedelegate4.png&quot; alt=&quot;image-center&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;AppDelegate.swift 에서 window 변수를 선언합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UIWindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;그리고 SceneDelegate의 UISceneSession Lifecycle 관련 함수들을 지워줍니다.&lt;/p&gt;
+
+&lt;p&gt;그러면 App 빌드가 원활히 되는 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;font size=&quot;4&quot;&gt;참고&lt;/font&gt;&lt;br /&gt;&lt;/strong&gt;
+&lt;a href=&quot;https://medium.com/@taegeon/xcode-11%EC%97%90%EC%84%9C-interface-builder%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-ios-12%EC%9A%A9-%EC%95%B1-%EB%B9%8C%EB%93%9C%ED%95%98%EA%B8%B0-81e3fd62efe3&quot;&gt;&lt;font size=&quot;4&quot;&gt;Xcode 11에서 SceneDelegate 사용하지 않고 Interface Builder 앱 만들기&lt;/font&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;figure style=&quot;width: 100px&quot; class=&quot;align-center&quot;&gt;
+&lt;a href=&quot;https://sunidev.github.io/&quot;&gt;
+  &lt;img href=&quot;https://sunidev.github.io/&quot; src=&quot;http://localhost:4000/assets/images/suni/profile.png&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption align=&quot;center&quot;&gt;Suni&lt;/figcaption&gt;
+  &lt;/a&gt;
+&lt;/figure&gt;
+</description>
+        <pubDate>Wed, 06 Jan 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/ios/scenedelegate-remove/</link>
+        <guid isPermaLink="true">http://localhost:4000/ios/scenedelegate-remove/</guid>
+        
+        <category>iOS</category>
+        
+        <category>Xcode</category>
+        
+        <category>SceneDelegate</category>
+        
+        
+        <category>iOS</category>
+        
+      </item>
     
   </channel>
 </rss>

@@ -1,0 +1,598 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[iOS/Xcode] SceneDelegate 삭제하고 App Build - 연어들의 개발블로그</title>
+<meta name="description" content="Xcode11부터 iOS App 프로젝트에 자동으로 SceneDelegate가 적용된 템플릿이 추가됩니다. SceneDelegate에 대해서는 추후에 포스팅하겠습니다.">
+
+
+  <meta name="author" content="Salmons">
+  
+  <meta property="article:author" content="Salmons">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="연어들의 개발블로그">
+<meta property="og:title" content="[iOS/Xcode] SceneDelegate 삭제하고 App Build">
+<meta property="og:url" content="http://localhost:4000/ios/scenedelegate-remove/">
+
+
+  <meta property="og:description" content="Xcode11부터 iOS App 프로젝트에 자동으로 SceneDelegate가 적용된 템플릿이 추가됩니다. SceneDelegate에 대해서는 추후에 포스팅하겠습니다.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-01-06T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/ios/scenedelegate-remove/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "연어들의 개발블로그",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="연어들의 개발블로그 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          연어들의 개발블로그
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/project/">PROJECT</a>
+            </li><li class="masthead__menu-item">
+              <a href="/ios/">iOS</a>
+            </li><li class="masthead__menu-item">
+              <a href="/aos/">AOS</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">ARCHIVE</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">TAG</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">CATEGORY</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/profile.jpg" alt="Salmons" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Salmons</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>iOS. Suni / AOS. kyuchanE, Seil</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:hyunsun819@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/SalmonsDev" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">Salmons</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/SuniDev" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">Suni</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/kyuchanE" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">kyuchanE</span></a></li>
+          
+        
+          
+            <li><a href="https://sunidev.github.io" rel="nofollow noopener noreferrer"><i class="fas fa-link" aria-hidden="true"></i><span class="label">Suni's Blog</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[iOS/Xcode] SceneDelegate 삭제하고 App Build">
+    <meta itemprop="description" content="Xcode11부터 iOS App 프로젝트에 자동으로 SceneDelegate가 적용된 템플릿이 추가됩니다.SceneDelegate에 대해서는 추후에 포스팅하겠습니다.">
+    <meta itemprop="datePublished" content="2021-01-06T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[iOS/Xcode] SceneDelegate 삭제하고 App Build
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#이번-글은">이번 글은</a></li><li><a href="#1-프로젝트-생성">1. 프로젝트 생성</a></li><li><a href="#2-scenedelegateswift-파일-삭제">2. SceneDelegate.swift 파일 삭제</a></li><li><a href="#3-infoplist--application-scene-manifest-삭제">3. info.plist &gt; Application Scene Manifest 삭제</a></li><li><a href="#4-appdelegateswift-수정">4. AppDelegate.swift 수정</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>Xcode11부터 iOS App 프로젝트에 자동으로 SceneDelegate가 적용된 템플릿이 추가됩니다.
+SceneDelegate에 대해서는 추후에 포스팅하겠습니다.</p>
+
+<h2 id="이번-글은">이번 글은</h2>
+<p>SceneDelegate를 사용하지 않고 iOS App을 빌드하는 방법입니다.<br />
+첨부 이미지는 Storyboard intreface기반 Swift 프로젝트입니다.</p>
+
+<h2 id="1-프로젝트-생성">1. 프로젝트 생성</h2>
+
+<p><img src="http://localhost:4000/assets/images/suni/210106/remove-scenedelegate1.png" alt="image-center" class="align-center" /></p>
+
+<p>File &gt; New &gt; Project 에서 iOS &gt; App을 선택하고
+Interface를 Storyboard로 지정하여 프로젝트를 생성합니다.</p>
+
+<h2 id="2-scenedelegateswift-파일-삭제">2. SceneDelegate.swift 파일 삭제</h2>
+
+<p><img src="http://localhost:4000/assets/images/suni/210106/remove-scenedelegate2.png" alt="image-center" class="align-center" /></p>
+
+<p>SceneDelegate.swift 파일을 삭제합니다.</p>
+
+<h2 id="3-infoplist--application-scene-manifest-삭제">3. info.plist &gt; Application Scene Manifest 삭제</h2>
+
+<p><img src="http://localhost:4000/assets/images/suni/210106/remove-scenedelegate3.png" alt="image-center" class="align-center" /></p>
+
+<p>info.plist 에서 Application Scene Manifest를 삭제합니다.</p>
+
+<h2 id="4-appdelegateswift-수정">4. AppDelegate.swift 수정</h2>
+
+<p><img src="http://localhost:4000/assets/images/suni/210106/remove-scenedelegate4.png" alt="image-center" class="align-center" /></p>
+
+<p>AppDelegate.swift 에서 window 변수를 선언합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">window</span><span class="p">:</span> <span class="kt">UIWindow</span><span class="p">?</span>
+</code></pre></div></div>
+
+<p>그리고 SceneDelegate의 UISceneSession Lifecycle 관련 함수들을 지워줍니다.</p>
+
+<p>그러면 App 빌드가 원활히 되는 것을 확인할 수 있습니다.</p>
+
+<p><br /><br />
+<strong><font size="4">참고</font><br /></strong>
+<a href="https://medium.com/@taegeon/xcode-11%EC%97%90%EC%84%9C-interface-builder%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-ios-12%EC%9A%A9-%EC%95%B1-%EB%B9%8C%EB%93%9C%ED%95%98%EA%B8%B0-81e3fd62efe3"><font size="4">Xcode 11에서 SceneDelegate 사용하지 않고 Interface Builder 앱 만들기</font></a></p>
+
+<p><br /><br /></p>
+<figure style="width: 100px" class="align-center">
+<a href="https://sunidev.github.io/">
+  <img href="https://sunidev.github.io/" src="http://localhost:4000/assets/images/suni/profile.png" alt="" />
+  <figcaption align="center">Suni</figcaption>
+  </a>
+</figure>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#ios" class="page__taxonomy-item" rel="tag">iOS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#scenedelegate" class="page__taxonomy-item" rel="tag">SceneDelegate</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#xcode" class="page__taxonomy-item" rel="tag">Xcode</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#ios" class="page__taxonomy-item" rel="tag">iOS</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-01-06T00:00:00+09:00">January 6, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BiOS%2FXcode%5D+SceneDelegate+%EC%82%AD%EC%A0%9C%ED%95%98%EA%B3%A0+App+Build%20http%3A%2F%2Flocalhost%3A4000%2Fios%2Fscenedelegate-remove%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fios%2Fscenedelegate-remove%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fios%2Fscenedelegate-remove%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+            
+      </div>
+    </div>
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://github.com/SalmonsDev" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> Salmons</a></li>
+        
+      
+        
+          <li><a href="https://github.com/SuniDev" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> Suni</a></li>
+        
+      
+        
+          <li><a href="https://github.com/kyuchanE" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> kyuchanE</a></li>
+        
+      
+        
+          <li><a href="https://sunidev.github.io" rel="nofollow noopener noreferrer"><i class="fas fa-link" aria-hidden="true"></i> Suni's Blog</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 연어들의 개발블로그. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <!---->
+<!--  <script>-->
+<!--    var disqus_config = function () {-->
+<!--      this.page.url = "http://localhost:4000/ios/scenedelegate-remove/";  /* Replace PAGE_URL with your page's canonical URL variable */-->
+<!--      this.page.identifier = "/ios/scenedelegate-remove"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */-->
+<!--    };-->
+<!--    (function() { /* DON'T EDIT BELOW THIS LINE */-->
+<!--      var d = document, s = d.createElement('script');-->
+<!--      s.src = 'https://salmonsdev-github-io.disqus.com/embed.js';-->
+<!--      s.setAttribute('data-timestamp', +new Date());-->
+<!--      (d.head || d.body).appendChild(s);-->
+<!--    })();-->
+<!--  </script>-->
+<!--<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>-->
+<!---->
+
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://salmonsdev-github-io.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

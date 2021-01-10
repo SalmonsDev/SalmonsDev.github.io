@@ -27,7 +27,7 @@ RecyclerView에 GridLayoutManager를 활용하는 방법 입니다.<br>
 저는 RecyclerView와 Glide를 활용하여 작업했습니다.<br>
 Glide는 안드로이드 이미지 로딩 라이브러리 입니다.<br>
 
-```Kotlin
+```kotlin
 // glide
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
     implementation 'jp.wasabeef:glide-transformations:4.1.0'
@@ -72,7 +72,7 @@ item_my_list.xml
 Android dataBinding에 관한 내용은 추후 포스팅 하겠습니다.   Click [here](https://developer.android.com/topic/libraries/data-binding?hl=ko){: target="_blank"}
 <br>
 
-```Kotlin
+```kotlin
 MyAdapter.kt
 class MyAdapter: RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
@@ -109,7 +109,7 @@ class MyAdapter: RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 <br>
 RecyclerView는 같은 아이템을 반복하여 재사용하기 때문에 위의 RecyclerViewAdapter에서 사용할 아이템 class를 정의해야 합니다.
 <br>
-```Kotlin
+```kotlin
 MyListData.kt
 data class MyListData (
     val imgStr: String?
@@ -160,7 +160,7 @@ activity_main.xml
 </layout>
 ```
 <br>
-```Kotlin
+```kotlin
 MainaActivity.kt
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 

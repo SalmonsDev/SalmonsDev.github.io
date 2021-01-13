@@ -125,6 +125,9 @@ author:
     - label: "Suni's Blog"
       icon: ""
       url: "https://sunidev.github.io"
+    - label: "Kyu's Blog"
+      icon: ""
+      url: "https://kyuchane.github.io/"
 # Site Footer
 footer:
   links:
@@ -155,6 +158,9 @@ footer:
     - label: "Suni's Blog"
       icon: ""
       url: "https://sunidev.github.io"
+    - label: "Kyu's Blog"
+      icon: ""
+      url: "https://kyuchane.github.io/"
 
 
 # Reading Files

@@ -48,7 +48,7 @@ AutoLayout 을 설정합니다.
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/suni/210113/make-gridcollectionview-cell1.png){: .align-center}
 
-![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/suni210113/make-gridcollectionview-cell2.png){: .align-center}
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/suni/210113/make-gridcollectionview-cell2.png){: .align-center}
 New File > iOS > Cocoa Touch Class 를 클릭합니다.
 
 <br>

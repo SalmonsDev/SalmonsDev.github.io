@@ -1,0 +1,836 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[AOS/Kotlin] Android Kotlin RecycerView GridLayoutManager - 연어들의 개발블로그</title>
+<meta name="description" content="Android RecyclerView GridLayoutManager">
+
+
+  <meta name="author" content="Salmons">
+  
+  <meta property="article:author" content="Salmons">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="연어들의 개발블로그">
+<meta property="og:title" content="[AOS/Kotlin] Android Kotlin RecycerView GridLayoutManager">
+<meta property="og:url" content="http://localhost:4000/aos/recycler-grid-aos/">
+
+
+  <meta property="og:description" content="Android RecyclerView GridLayoutManager">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-01-10T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/aos/recycler-grid-aos/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "연어들의 개발블로그",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="연어들의 개발블로그 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          연어들의 개발블로그
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/project/">PROJECT</a>
+            </li><li class="masthead__menu-item">
+              <a href="/ios/">iOS</a>
+            </li><li class="masthead__menu-item">
+              <a href="/aos/">AOS</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">ARCHIVE</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">TAG</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">CATEGORY</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/profile.jpg" alt="Salmons" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Salmons</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>iOS. Suni / AOS. kyuchanE, Seil</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:hyunsun819@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/SalmonsDev" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">Salmons</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/SuniDev" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">Suni</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/kyuchanE" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">kyuchanE</span></a></li>
+          
+        
+          
+            <li><a href="https://sunidev.github.io" rel="nofollow noopener noreferrer"><i class="fas fa-link" aria-hidden="true"></i><span class="label">Suni's Blog</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[AOS/Kotlin] Android Kotlin RecycerView GridLayoutManager">
+    <meta itemprop="description" content="Android RecyclerView GridLayoutManager">
+    <meta itemprop="datePublished" content="2021-01-10T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[AOS/Kotlin] Android Kotlin RecycerView GridLayoutManager
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#이번-글은">이번 글은</a></li><li><a href="#1-프로젝트-준비">1. 프로젝트 준비</a></li><li><a href="#2-recyclerview-생성">2. RecyclerView 생성</a></li><li><a href="#3-activity에-recyclerview-적용">3. Activity에 RecyclerView 적용</a></li><li><a href="#4-끝으로">4. 끝으로…</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>Android RecyclerView GridLayoutManager</p>
+
+<h2 id="이번-글은">이번 글은</h2>
+<p>RecyclerView에 GridLayoutManager를 활용하는 방법 입니다.<br />
+긴 말에 앞서 결과부터 이미지부터 확인하겠습니다.</p>
+
+<p><img src="/assets/images/chan9u/210110/android_gridlayout.jpeg" alt="image-center" class="align-center" /></p>
+
+<h2 id="1-프로젝트-준비">1. 프로젝트 준비</h2>
+
+<p>저는 RecyclerView와 Glide를 활용하여 작업했습니다.<br />
+Glide는 안드로이드 이미지 로딩 라이브러리 입니다.<br /></p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// glide</span>
+    <span class="n">kapt</span> <span class="err">'</span><span class="n">com</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">bumptech</span><span class="p">.</span><span class="n">glide</span><span class="p">:</span><span class="n">compiler</span><span class="p">:</span><span class="mf">4.11.0</span><span class="err">'</span>
+    <span class="n">implementation</span> <span class="err">'</span><span class="n">jp</span><span class="p">.</span><span class="n">wasabeef</span><span class="p">:</span><span class="n">glide-transformations</span><span class="p">:</span><span class="mf">4.1.0</span><span class="err">'</span>
+<span class="c1">// recyclerview</span>
+    <span class="n">implementation</span> <span class="err">'</span><span class="n">com</span><span class="p">.</span><span class="n">jakewharton</span><span class="p">.</span><span class="n">rxbinding3</span><span class="p">:</span><span class="n">rxbinding-recyclerview</span><span class="p">:</span><span class="mf">3.1.0</span><span class="err">'</span>
+
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="2-recyclerview-생성">2. RecyclerView 생성</h2>
+
+<p>우선 RecyclerView에 관한 기본 내용은 Click <a href="https://developer.android.com/guide/topics/ui/layout/recyclerview?hl=ko" target="_blank">here</a>
+<br />
+먼저 RecyclerViewAdapter 와 RecyclerView의 아이템 레이아웃을 생성합니다.<br /></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>item_my_list.xml
+<span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;layout</span> <span class="na">xmlns:app=</span><span class="s">"http://schemas.android.com/apk/res-auto"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;androidx.constraintlayout.widget.ConstraintLayout</span>
+        <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+        <span class="na">android:layout_margin=</span><span class="s">"10dp"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;ImageView</span>
+            <span class="na">android:id=</span><span class="s">"@+id/iv_item"</span>
+            <span class="na">android:layout_width=</span><span class="s">"100dp"</span>
+            <span class="na">android:layout_height=</span><span class="s">"160dp"</span>
+            <span class="na">app:layout_constraintTop_toTopOf=</span><span class="s">"parent"</span>
+            <span class="na">app:layout_constraintBottom_toBottomOf=</span><span class="s">"parent"</span>
+            <span class="na">app:layout_constraintEnd_toEndOf=</span><span class="s">"parent"</span>
+            <span class="na">app:layout_constraintStart_toStartOf=</span><span class="s">"parent"</span>
+            <span class="na">android:scaleType=</span><span class="s">"centerCrop"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</span>
+<span class="nt">&lt;/layout&gt;</span>
+</code></pre></div></div>
+<p><br />
+&lt;layout 태그가 들어간 이유는 dataBinding을 사용했기 때문입니다.<br />
+Android dataBinding에 관한 내용은 추후 포스팅 하겠습니다.   Click <a href="https://developer.android.com/topic/libraries/data-binding?hl=ko" target="_blank">here</a>
+<br /></p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">MyAdapter</span><span class="p">.</span><span class="n">kt</span>
+<span class="kd">class</span> <span class="nc">MyAdapter</span><span class="p">:</span> <span class="nc">RecyclerView</span><span class="p">.</span><span class="nc">Adapter</span><span class="p">&lt;</span><span class="nc">MyAdapter</span><span class="err">.</span><span class="nc">MyViewHolder</span><span class="p">&gt;()</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="kd">var</span> <span class="py">adapterItemList</span><span class="p">:</span> <span class="nc">MutableList</span><span class="p">&lt;</span><span class="nc">MyListData</span><span class="p">&gt;</span> <span class="p">=</span> <span class="nf">mutableListOf</span><span class="p">()</span>
+
+    <span class="k">inner</span> <span class="kd">class</span> <span class="nc">MyViewHolder</span> <span class="p">(</span>
+            <span class="kd">val</span> <span class="py">binding</span><span class="p">:</span> <span class="nc">ItemMyListBinding</span>
+    <span class="p">):</span> <span class="nc">RecyclerView</span><span class="p">.</span><span class="nc">ViewHolder</span><span class="p">(</span>
+        <span class="n">binding</span><span class="p">.</span><span class="n">root</span>
+    <span class="p">){</span>
+        <span class="k">fun</span> <span class="nf">bindViewHolder</span><span class="p">(</span><span class="n">pos</span><span class="p">:</span> <span class="nc">Int</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nf">with</span><span class="p">(</span><span class="n">adapterItemList</span><span class="p">[</span><span class="n">pos</span><span class="p">])</span> <span class="p">{</span>
+                <span class="n">binding</span><span class="p">.</span><span class="n">ivItem</span><span class="p">.</span><span class="nf">loadRound</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">imgStr</span><span class="p">.</span><span class="nf">toString</span><span class="p">(),</span> <span class="mi">10</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreateViewHolder</span><span class="p">(</span><span class="n">parent</span><span class="p">:</span> <span class="nc">ViewGroup</span><span class="p">,</span> <span class="n">viewType</span><span class="p">:</span> <span class="nc">Int</span><span class="p">):</span> <span class="nc">MyViewHolder</span>
+            <span class="p">=</span> <span class="nc">MyViewHolder</span><span class="p">(</span><span class="n">parent</span><span class="p">.</span><span class="nf">bind</span><span class="p">(</span><span class="nc">R</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">item_my_list</span><span class="p">))</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">getItemCount</span><span class="p">():</span> <span class="nc">Int</span> <span class="p">=</span> <span class="n">adapterItemList</span><span class="p">.</span><span class="n">size</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onBindViewHolder</span><span class="p">(</span><span class="n">holder</span><span class="p">:</span> <span class="nc">MyViewHolder</span><span class="p">,</span> <span class="n">position</span><span class="p">:</span> <span class="nc">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">holder</span><span class="p">.</span><span class="nf">bindViewHolder</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">fun</span> <span class="nf">addItemList</span><span class="p">(</span><span class="n">list</span><span class="p">:</span> <span class="nc">MutableList</span><span class="p">&lt;</span><span class="nc">MyListData</span><span class="p">&gt;)</span> <span class="p">{</span>
+        <span class="n">adapterItemList</span><span class="p">.</span><span class="nf">clear</span><span class="p">()</span>
+        <span class="n">adapterItemList</span><span class="p">.</span><span class="nf">addAll</span><span class="p">(</span><span class="n">list</span><span class="p">)</span>
+        <span class="nf">notifyDataSetChanged</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><br />
+RecyclerView는 같은 아이템을 반복하여 재사용하기 때문에 위의 RecyclerViewAdapter에서 사용할 아이템 class를 정의해야 합니다.
+<br /></p>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">MyListData</span><span class="p">.</span><span class="n">kt</span>
+<span class="kd">data class</span> <span class="nc">MyListData</span> <span class="p">(</span>
+    <span class="kd">val</span> <span class="py">imgStr</span><span class="p">:</span> <span class="nc">String</span><span class="p">?</span>
+<span class="p">)</span>
+</code></pre></div></div>
+<p>간단하게 이미지만 출력하기 때문에 이미지url을 저장할수 있는 String 변수 하나만 선언했습니다.<br /></p>
+
+<h2 id="3-activity에-recyclerview-적용">3. Activity에 RecyclerView 적용</h2>
+
+<p>저는 MainaActivity에 간단하게 RecyclerView 를 적용시켰습니다. <br />
+RecyclerView LayoutManager의 종류는 크게 LinearLayout, GirdLayout, StaggeredGridLayout 이 있습니다. <br />
+LinearLayout 은 가로 또는 세로 방향으로 길게 나열되는 방식이고, <br />
+GridLayout 은 바둑판 격자 형식으로 간단하게 표 방식이라고 생각하시면 됩니다. <br />
+StaggeredGridLayout 은 Gridlayout에서 가로 또는 세로의 길이가 불규칙적인 방식입니다. <br /></p>
+
+<p><img src="/assets/images/chan9u/210110/android_layoutmanager.png" alt="image-center" class="align-center" />
+참고 <a href="https://androidride.com/recyclerview-android-simple-tutorial-listview-checkbox-example/" target="_blank">here</a>
+<br /></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>activity_main.xml
+<span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;layout&gt;</span>
+    <span class="nt">&lt;androidx.constraintlayout.widget.ConstraintLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+        <span class="na">xmlns:app=</span><span class="s">"http://schemas.android.com/apk/res-auto"</span>
+        <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span>
+        <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+        <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+        <span class="na">android:background=</span><span class="s">"#999999"</span>
+        <span class="na">tools:context=</span><span class="s">".activity.MainActivity"</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;LinearLayout</span>
+            <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+            <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+            <span class="na">android:orientation=</span><span class="s">"vertical"</span>
+            <span class="na">android:layout_marginVertical=</span><span class="s">"50dp"</span><span class="nt">&gt;</span>
+
+            <span class="nt">&lt;androidx.recyclerview.widget.RecyclerView</span>
+                <span class="na">android:id=</span><span class="s">"@+id/rv_test"</span>
+                <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+                <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+                <span class="na">android:layout_gravity=</span><span class="s">"center_horizontal"</span><span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;/LinearLayout&gt;</span>
+
+    <span class="nt">&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</span>
+<span class="nt">&lt;/layout&gt;</span>
+</code></pre></div></div>
+<p><br /></p>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">MainaActivity</span><span class="p">.</span><span class="n">kt</span>
+<span class="kd">class</span> <span class="nc">MainActivity</span> <span class="p">:</span> <span class="nc">BaseActivity</span><span class="p">&lt;</span><span class="nc">ActivityMainBinding</span><span class="p">&gt;()</span> <span class="p">{</span>
+
+    <span class="k">override</span> <span class="kd">val</span> <span class="py">layoutId</span><span class="p">:</span> <span class="nc">Int</span> <span class="p">=</span> <span class="nc">R</span><span class="p">.</span><span class="n">layout</span><span class="p">.</span><span class="n">activity_main</span>
+
+    <span class="k">private</span> <span class="kd">var</span> <span class="py">adapterMy</span><span class="p">:</span> <span class="nc">MyAdapter</span> <span class="p">=</span> <span class="nc">MyAdapter</span><span class="p">()</span>
+    <span class="k">private</span> <span class="kd">var</span> <span class="py">myItemList</span><span class="p">:</span> <span class="nc">MutableList</span><span class="p">&lt;</span><span class="nc">MyListData</span><span class="p">&gt;</span> <span class="p">=</span> <span class="nf">mutableListOf</span><span class="p">()</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="nc">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+
+        <span class="nf">initViews</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">initViews</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="nf">initViews</span><span class="p">()</span>
+
+        <span class="n">myItemList</span><span class="p">.</span><span class="nf">apply</span> <span class="p">{</span>
+            <span class="nf">add</span><span class="p">(</span><span class="nc">StaggeredListData</span><span class="p">(</span><span class="s">"원하는 이미지 url"</span><span class="p">))</span>
+            <span class="nf">add</span><span class="p">(</span><span class="nc">StaggeredListData</span><span class="p">(</span><span class="s">"원하는 이미지 url"</span><span class="p">))</span>
+            <span class="o">..</span><span class="p">.</span>
+        <span class="p">}</span>
+
+        <span class="n">adapterMy</span><span class="p">.</span><span class="nf">apply</span> <span class="p">{</span>
+            <span class="nf">addItemList</span><span class="p">(</span><span class="n">myItemList</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="n">binding</span><span class="p">.</span><span class="n">rvTest</span><span class="p">.</span><span class="nf">apply</span> <span class="p">{</span>
+            <span class="n">adapter</span> <span class="p">=</span> <span class="n">adapterMy</span>
+            <span class="n">layoutManager</span> <span class="p">=</span> <span class="nc">GridLayoutManager</span><span class="p">(</span><span class="k">this</span><span class="nd">@MainActivity</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+<p><br /></p>
+
+<h2 id="4-끝으로">4. 끝으로…</h2>
+
+<p>결과 이미지의 둥근모서리 작업은 Glide 라이브러리를 활용했습니다. <br />
+위 내용과 관련된 dataBiding, Glide 내용은 추후 정리하여 포스팅 하겠습니다. <br />
+<br />
+<br />
+<a href="https://github.com/kyuchanE">‘kyuchanE’ Android 개발자</a></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#aos" class="page__taxonomy-item" rel="tag">AOS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#gridlayoutmanager" class="page__taxonomy-item" rel="tag">GridLayoutManager</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#kotlin" class="page__taxonomy-item" rel="tag">Kotlin</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#aos" class="page__taxonomy-item" rel="tag">AOS</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-01-10T00:00:00+09:00">January 10, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BAOS%2FKotlin%5D+Android+Kotlin+RecycerView+GridLayoutManager%20http%3A%2F%2Flocalhost%3A4000%2Faos%2Frecycler-grid-aos%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Faos%2Frecycler-grid-aos%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Faos%2Frecycler-grid-aos%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/ios/scenedelegate-remove/" class="pagination--pager" title="[iOS/Xcode] SceneDelegate 삭제하고 App Build
+">Previous</a>
+    
+    
+      <a href="/ios/make-gridcollectionview/" class="pagination--pager" title="[iOS/Swift] Grid형태 Image CollectionView만들기
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="" alt="">
+      </div>
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/ios/make-gridcollectionview/" rel="permalink">[iOS/Swift] Grid형태 Image CollectionView만들기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">이번 글은
+
+Grid 형태의 image CollectionView를 만드는 방법입니다. 
+첨부 이미지는 Storyboard intreface기반 Swift 프로젝트입니다.
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="" alt="">
+      </div>
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/ios/scenedelegate-remove/" rel="permalink">[iOS/Xcode] SceneDelegate 삭제하고 App Build
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Xcode11부터 iOS App 프로젝트에 자동으로 SceneDelegate가 적용된 템플릿이 추가됩니다.
+SceneDelegate에 대해서는 추후에 포스팅하겠습니다.
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="https://github.com/SalmonsDev" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> Salmons</a></li>
+        
+      
+        
+          <li><a href="https://github.com/SuniDev" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> Suni</a></li>
+        
+      
+        
+          <li><a href="https://github.com/kyuchanE" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> kyuchanE</a></li>
+        
+      
+        
+          <li><a href="https://sunidev.github.io" rel="nofollow noopener noreferrer"><i class="fas fa-link" aria-hidden="true"></i> Suni's Blog</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 연어들의 개발블로그. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <!---->
+<!--  <script>-->
+<!--    var disqus_config = function () {-->
+<!--      this.page.url = "http://localhost:4000/aos/recycler-grid-aos/";  /* Replace PAGE_URL with your page's canonical URL variable */-->
+<!--      this.page.identifier = "/aos/recycler-grid-aos"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */-->
+<!--    };-->
+<!--    (function() { /* DON'T EDIT BELOW THIS LINE */-->
+<!--      var d = document, s = d.createElement('script');-->
+<!--      s.src = 'https://salmonsdev-github-io.disqus.com/embed.js';-->
+<!--      s.setAttribute('data-timestamp', +new Date());-->
+<!--      (d.head || d.body).appendChild(s);-->
+<!--    })();-->
+<!--  </script>-->
+<!--<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>-->
+<!---->
+
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://salmonsdev-github-io.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

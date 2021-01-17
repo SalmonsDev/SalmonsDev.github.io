@@ -111,10 +111,10 @@ override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
 
 <br>
 
-## 3. 끝으로...
+## 마치며
 
 분명 더 좋은 방법도 있겠지만 자료는 안나오고, 당장 마감이 급하다 보니 나온 편법인것같습니다.
 더 좋은 방법 아시는 분은 꼭 연락주세요!<br>
 <br>
 <br>
-['Seil' Android 개발자](https://github.com/kimseil)
+[![Vue](/assets/images/seil/common/img_link.png)Seil's Blog](https://blog.naver.com/llloveshin)

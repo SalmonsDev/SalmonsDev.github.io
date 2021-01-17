@@ -117,4 +117,4 @@ override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
 더 좋은 방법 아시는 분은 꼭 연락주세요!<br>
 <br>
 <br>
-[![Vue](/assets/images/seil/common/img_link.png)Seil's Blog](https://blog.naver.com/llloveshin)
+[![Vue](/assets/images/seil/common/img_link.png)](https://blog.naver.com/llloveshin)

@@ -125,7 +125,7 @@ extension 안에 위와 같이 작성합니다.
 
 ## TIP. TableViewCell Select Highlight
 
-![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/suni/210118/make-tableview-of-xib-tip2.png){: .align-center}
+![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/suni/210118/make-tableview-of-xib-tip2.PNG){: .align-center}
 Table View Cell의 Default설정은 위와 같이 Cell을 선택하면 하이라이트가 들어갑니다.
 하이라이트를 없애는 방법입니다.
 

@@ -1,3 +1,4 @@
+---
 title: "[AOS/Kotlin] Android USB to Serial (QR코드 스캐너 시리얼 통신으로 연결)"
 header:
   teaser: ""

@@ -13,20 +13,22 @@ tags:
 toc: true
 ---
 
-Android ViewPager Swipe(Drag) MinDistance
-
 ## 이번 글은
 
-상용앱은 보통의 경우 ViewPager의 Swipe 감도를 수정할 일이 없습니다.
+상용앱은 보통의 경우 ViewPager의 Swipe 감도를 수정할 일이 없습니다.  
 그러나 키오스크 등 큰 화면의 기기에 사용될 앱을 만들 경우 사용자가 Swipe 모션을 제대로 수행하기 힘들기 때문에, 약간의 커스텀이 필요합니다.
 
-ViewPager는 drag의 velocity에 따라 fling의 여부를 판단합니다.
-fling일 경우 fling distance를 계산해 정해진 수치보다 높을 경우 page를 전환시킵니다.
-fling이 아닐 경우 화면의 이동 offset에 page position을 더한 값에 버림연산을 하여 페이지를 결정합니다.
 
-이때 fling의 경우 JAVA의 reflect로 fling distance와 minVelocity를 바꿀 수 있지만, drag의 경우 임계치를 상수로 사용하여 reflect로 커스텀할 수 없으며, private method 이기 때문에 override도 불가능합니다.
+ViewPager는 drag의 velocity에 따라 fling의 여부를 판단합니다.  
+fling일 경우 fling distance를 계산해 정해진 수치보다 높을 경우 page를 전환시킵니다.  
+fling이 아닐 경우 화면의 이동 offset에 page position을 더한 값에 버림연산을 하여 페이지를 결정합니다.  
 
-아래에 제가 시도해본 두가지 방법의 간단한 소스와 설명을 준비했습니다.<br>
+이때 fling의 경우 JAVA의 reflect로 fling distance와 minVelocity를 바꿀 수 있지만,  
+drag의 경우 임계치를 상수로 사용하여 reflect로 커스텀할 수 없으며,  
+private method 이기 때문에 override도 불가능합니다.
+
+
+아래에 제가 시도해본 두가지 방법의 간단한 소스와 설명을 준비했습니다.
 
 ## 1. reflect
 
@@ -113,7 +115,7 @@ override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
 
 ## 마치며
 
-분명 더 좋은 방법도 있겠지만 자료는 안나오고, 당장 마감이 급하다 보니 나온 편법인것같습니다.
+분명 더 좋은 방법도 있겠지만 자료는 안나오고, 당장 마감이 급하다 보니 나온 편법인것같습니다.  
 더 좋은 방법 아시는 분은 꼭 연락주세요!<br>
 <br>
 <br>

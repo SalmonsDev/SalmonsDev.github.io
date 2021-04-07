@@ -161,12 +161,18 @@ footer:
     - label: "kyuchanE"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/kyuchanE"
+    - label: "Seil"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/kimseil"
     - label: "Suni's Blog"
       icon: ""
       url: "https://sunidev.github.io"
     - label: "Kyu's Blog"
       icon: ""
       url: "https://kyuchane.github.io/"
+    - label: "Seil's Blog"
+      icon: ""
+      url: "https://blog.naver.com/llloveshin"
 
 
 # Reading Files
